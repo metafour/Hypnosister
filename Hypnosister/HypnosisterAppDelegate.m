@@ -17,9 +17,45 @@
     // Override point for customization after application launch.
 //    CGRect viewFrame = CGRectMake(130, 240, 100, 150);
     
-    HypnosisView *view = [[HypnosisView alloc] initWithFrame:[[self window] bounds]];
+//    HypnosisView *view = [[HypnosisView alloc] initWithFrame:[[self window] bounds]];
     
-    [[self window] addSubview:view];
+    // Hide status bar after launch
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    
+    CGRect screenRect = [[self window] bounds];
+    
+    // UIScrollView should match window size
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
+    
+    [scrollView setMinimumZoomScale:0.5];
+    [scrollView setMaximumZoomScale:5.0];
+    
+    [scrollView setDelegate:self];
+    
+    [[self window] addSubview:scrollView];
+    
+    // Create Hypnosis view twice the size of the screen
+    CGRect bigRect = screenRect;
+    
+    bigRect.size.width *= 2;
+    bigRect.size.height *= 2;
+    view = [[HypnosisView alloc] initWithFrame:bigRect];
+    
+    [scrollView addSubview:view];
+    
+//    secondView
+    
+    // Place secondView to the right of the first view
+//    screenRect.origin.x = screenRect.size.width - 100;
+//    
+//    HypnosisView *secondView = [[HypnosisView alloc] initWithFrame:screenRect];
+//    
+//    [scrollView addSubview:secondView];
+    
+    // Tell scrollView size of the the content area
+    [scrollView setContentSize:bigRect.size];
+    
+//    [[self window] addSubview:view];
     
     BOOL success = [view becomeFirstResponder];
     if (success) {
@@ -31,6 +67,11 @@
     self.window.backgroundColor = [UIColor greenColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return view;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
