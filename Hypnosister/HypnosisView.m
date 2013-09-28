@@ -35,6 +35,8 @@
 
 - (void)drawRect:(CGRect)dirtyRect
 {
+    NSArray *colors = [[NSArray alloc] initWithObjects:@"blackColor", @"darkGrayColor", @"lightGrayColor", @"whiteColor", @"grayColor", @"redColor", @"greenColor", @"blueColor", @"cyanColor", @"yellowColor", @"magentaColor", @"orangeColor", @"purpleColor", @"brownColor", @"clearColor", nil];
+    
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGRect bounds = [self bounds];
     
@@ -54,7 +56,7 @@
 //    CGContextSetRGBStrokeColor(ctx, 0.6, 0.6, 0.6, 1.0);
     // Line color: red
 //    CGContextSetRGBStrokeColor(ctx, 1.0, 0.0, 0.0, 1.0);
-    [[self circleColor] setStroke];
+//    [[self circleColor] setStroke];
     
     // Add a shape to the context
 //    CGContextAddArc(ctx, center.x, center.y, maxRadius, 0.0, M_PI * 2.0, YES);
@@ -64,8 +66,18 @@
     
     // Draw concentric circles from outside in
     for (float currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20) {
+        
+//        NSLog(@"Random #: %u", rand() % ([colors count] + 1));
+        
+        NSString *color = [colors objectAtIndex:(rand() % ([colors count]))];
+        SEL sel = NSSelectorFromString(color);
+        
+        [self setCircleColor:[UIColor performSelector:sel]];
+        [[self circleColor] setStroke];
+        
         CGContextAddArc(ctx, center.x, center.y, currentRadius, 0, M_PI * 2.0, YES);
         CGContextStrokePath(ctx);
+        
     }
     
     NSString *text = @"You are getting sleepy.";
@@ -118,12 +130,12 @@
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if (motion == UIEventSubtypeMotionShake) {
-        
-        if (circleColor == [UIColor redColor]) {
-            [self setCircleColor:[UIColor greenColor]];
-        } else {
-            [self setCircleColor:[UIColor redColor]];
-        }
+        [self setNeedsDisplay];
+//        if (circleColor == [UIColor redColor]) {
+//            [self setCircleColor:[UIColor greenColor]];
+//        } else {
+//            [self setCircleColor:[UIColor redColor]];
+//        }
         
     }
 }
