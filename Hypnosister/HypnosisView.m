@@ -39,6 +39,7 @@
     CGRect bounds = [self bounds];
     
 //    NSLog(@"Current context: %@\nCurrent bounds: %@", ctx, bounds);
+    
     // Determine center of bounds rectangle
     CGPoint center;
     center.x = bounds.origin.x + bounds.size.width / 2.0;
@@ -107,6 +108,24 @@
 //    [text drawInRect:textRect withAttributes:nil];
     
 //    NSLog(@"width: %f, height: %f", textRect.size.width, textRect.size.height);
+    
+#pragma mark GreenCrosshair
+    
+    // Green Crosshair
+    
+    // Save state since we're going to modify it
+    CGContextSaveGState(ctx);
+    
+    CGContextSetShadowWithColor(ctx, offset, 2.0, NULL);
+    
+    CGContextMoveToPoint(ctx, center.x - 10, center.y);
+    CGContextAddLineToPoint(ctx, center.x + 10, center.y);
+    CGContextSetLineWidth(ctx, 2);
+    [[UIColor greenColor] setStroke];
+    CGContextMoveToPoint(ctx, center.x, center.y - 10);
+    CGContextAddLineToPoint(ctx, center.x, center.y + 10);
+    
+    CGContextStrokePath(ctx);
     
 }
 

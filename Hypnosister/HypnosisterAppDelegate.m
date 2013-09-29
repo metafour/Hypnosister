@@ -17,9 +17,22 @@
     // Override point for customization after application launch.
 //    CGRect viewFrame = CGRectMake(130, 240, 100, 150);
     
-    HypnosisView *view = [[HypnosisView alloc] initWithFrame:[[self window] bounds]];
+//    view = [[HypnosisView alloc] initWithFrame:[[self window] bounds]];
     
-    [[self window] addSubview:view];
+    CGRect screenRect = [[self window] bounds];
+    
+    // Create scroll view with screen size
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
+    
+    view = [[HypnosisView alloc] initWithFrame:screenRect];
+    [scrollView addSubview:view];
+    screenRect.origin.x = screenRect.size.width;
+    HypnosisView *secondView = [[HypnosisView alloc] initWithFrame:screenRect];
+    [scrollView addSubview:secondView];
+    screenRect.size.width *= 2;
+    [scrollView setContentSize:screenRect.size];
+    
+    [[self window] addSubview:scrollView];
     
     BOOL success = [view becomeFirstResponder];
     if (success) {
