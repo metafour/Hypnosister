@@ -20,6 +20,7 @@
 		01C032EE17F26444004ACFD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01C032EC17F26444004ACFD8 /* InfoPlist.strings */; };
 		01C032F017F26444004ACFD8 /* HypnosisterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C032EF17F26444004ACFD8 /* HypnosisterTests.m */; };
 		01C032FB17F27958004ACFD8 /* HypnosisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C032FA17F27958004ACFD8 /* HypnosisView.m */; };
+		01CC463517F7B83F00325009 /* HypnosisImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CC463417F7B83F00325009 /* HypnosisImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		01C032EF17F26444004ACFD8 /* HypnosisterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HypnosisterTests.m; sourceTree = "<group>"; };
 		01C032F917F27958004ACFD8 /* HypnosisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HypnosisView.h; sourceTree = "<group>"; };
 		01C032FA17F27958004ACFD8 /* HypnosisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HypnosisView.m; sourceTree = "<group>"; };
+		01CC463317F7B83F00325009 /* HypnosisImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HypnosisImage.h; sourceTree = "<group>"; };
+		01CC463417F7B83F00325009 /* HypnosisImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HypnosisImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 		01C032D017F26444004ACFD8 /* Hypnosister */ = {
 			isa = PBXGroup;
 			children = (
+				01CC463317F7B83F00325009 /* HypnosisImage.h */,
+				01CC463417F7B83F00325009 /* HypnosisImage.m */,
 				01C032D917F26444004ACFD8 /* HypnosisterAppDelegate.h */,
 				01C032DA17F26444004ACFD8 /* HypnosisterAppDelegate.m */,
 				01C032F917F27958004ACFD8 /* HypnosisView.h */,
@@ -247,6 +252,7 @@
 			files = (
 				01C032D717F26444004ACFD8 /* main.m in Sources */,
 				01C032DB17F26444004ACFD8 /* HypnosisterAppDelegate.m in Sources */,
+				01CC463517F7B83F00325009 /* HypnosisImage.m in Sources */,
 				01C032FB17F27958004ACFD8 /* HypnosisView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +454,7 @@
 				01C032F517F26444004ACFD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01C032F617F26444004ACFD8 /* Build configuration list for PBXNativeTarget "HypnosisterTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +463,7 @@
 				01C032F817F26444004ACFD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

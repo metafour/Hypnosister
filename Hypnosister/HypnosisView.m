@@ -7,6 +7,7 @@
 //
 
 #import "HypnosisView.h"
+#import "HypnosisImage.h"
 
 @implementation HypnosisView
 
@@ -107,6 +108,11 @@
 //    [text drawInRect:textRect withAttributes:nil];
     
 //    NSLog(@"width: %f, height: %f", textRect.size.width, textRect.size.height);
+    
+    HypnosisImage *imageView = [[HypnosisImage alloc] initWithFrame:CGRectMake(0, 25, 70, 70)];
+    [imageView setBackgroundColor:[UIColor clearColor]];
+    
+    [self addSubview:imageView];
     
 }
 
